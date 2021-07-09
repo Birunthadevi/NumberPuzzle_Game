@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.*;
 
 class CustomNumberPuzzleControl extends NumberPuzzleControl {
 	public int getWidth() {
@@ -42,12 +43,17 @@ class CustomNumberPuzzleControl extends NumberPuzzleControl {
 
 	}
 	public int[] getRandomNumbersForGrid() {
-		int arr[] = new int[15];
+		int arr=new int[15];
+		ArrayList<Integer> list = new ArrayList<Integer>();
+
+        for (int i=1; i<16; i++) {
+            list.add(new Integer(i));
+        }
 		
-		//Your logic here
-		int a = getRandomNumber();
-		
-		
+        Collections.shuffle(list);
+        for (int i=0; i<15; i++) {
+            arr[i]=list.get(i);
+        }
 		return arr;
 	}
 	public boolean checkForWinner(Button[] buttons)
